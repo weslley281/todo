@@ -1,25 +1,46 @@
 import { useState } from 'react';
-import { Image, Text, TextInput, TouchableOpacity, View } from 'react-native';
+import { Alert, Image, Text, TextInput, TouchableOpacity, View } from 'react-native';
 import { ListTodo } from '../components/ListTodo';
 import { styles } from './styles';
-//import to from '../../assets/to.png';
-//import do from '../../assets/do.png';
-interface Todo {
-    name: string;
-    state: boolean
+import { uuid } from 'uuidv4';
+
+interface Task {
+    id: string;
+    nameTask: string;
+    done: boolean
 }
 
 export function Home() {
-    const [todos, setTodos] = useState<string[]>([]);
+    const [tasks, setTasks] = useState<Task[]>([]);
+    const [nameTaskText, setnameTaskText] = useState('');
 
-    function handleCreateTodo(name: string): void{
-        const todo: Todo = {
-            name: name,
-            state: false
+    function handleAddTask(){
+
+        if(nameTaskText === ''){
+            return Alert.alert(
+                'Erro ao cadastrar',
+                'Preencha um nome valido'
+            )
         }
 
-        const todoAlreadyExists = 
+        const task = {
+            id: uuid(),
+            nameTask: nameTaskText,
+            done: false
+        }
 
+        const taskAlreadyExists = tasks.find(task => task.nameTask === nameTaskText);
+
+        if(taskAlreadyExists){
+            return Alert.alert(
+                'Aviso',
+                'Tarefa já existe'
+            )
+        }
+
+        setTasks(prevState => [...prevState, task]);
+        setnameTaskText('');
+        return(console.log(tasks))
     }
 
   return (
@@ -36,9 +57,16 @@ export function Home() {
         <View style={styles.container2}>
 
             <View style={styles.form}>
-                <TextInput style={styles.input}/>
+                <TextInput 
+                    style={styles.input}
+                    onChangeText={setnameTaskText}
+                    value={nameTaskText}
+                />
 
-                <TouchableOpacity style={styles.button}>
+                <TouchableOpacity
+                    style={styles.button}
+                    onPress={handleAddTask}
+                >
                     <Image source={require('../../../assets/plus.png')} />
                 </TouchableOpacity>
             </View>
