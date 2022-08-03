@@ -1,9 +1,27 @@
+import { useState } from 'react';
 import { Image, Text, TextInput, TouchableOpacity, View } from 'react-native';
+import { ListTodo } from '../components/ListTodo';
 import { styles } from './styles';
 //import to from '../../assets/to.png';
 //import do from '../../assets/do.png';
+interface Todo {
+    name: string;
+    state: boolean
+}
 
 export function Home() {
+    const [todos, setTodos] = useState<string[]>([]);
+
+    function handleCreateTodo(name: string): void{
+        const todo: Todo = {
+            name: name,
+            state: false
+        }
+
+        const todoAlreadyExists = 
+
+    }
+
   return (
     <>
         <View style={styles.container1}>
@@ -48,6 +66,7 @@ export function Home() {
             <View style={styles.containerList}>
                 
                 <View style={styles.line} />
+                <ListTodo />
             </View>          
 
         </View>
