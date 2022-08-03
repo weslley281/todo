@@ -40,7 +40,6 @@ export function Home() {
 
         setTasks(prevState => [...prevState, task]);
         setnameTaskText('');
-        return(console.log(tasks))
     }
 
   return (
