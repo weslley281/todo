@@ -1,11 +1,19 @@
-import { Text, View } from "react-native"
+import { Text, View, TouchableOpacity } from "react-native"
+
 import { styles } from "./styles"
 
-export function ListTodo(){
+interface Todo{
+    nameTask: string,
+    done: boolean
+}
+export function ListTodo({nameTask, done}: Todo){
     return(
         <View style={styles.container}>
-            <Text>
-                Tu tá de boa, não tem nada pra fazer... Mente vazia é oficina do diabo
+            <TouchableOpacity style={styles.CheckBox}>
+
+            </TouchableOpacity>
+            <Text style={styles.containerText}>
+                {nameTask}
             </Text>
         </View>
     )

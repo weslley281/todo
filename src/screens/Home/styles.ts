@@ -83,7 +83,8 @@ export const styles = StyleSheet.create({
     line:{
         backgroundColor: '#A2A2A2',
         height: 2,
-        width: '100%'
+        width: '100%',
+        marginBottom: 10
     },
     containerList: {
         width: '90%'

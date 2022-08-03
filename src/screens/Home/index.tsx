@@ -1,11 +1,9 @@
 import { useState } from 'react';
-import { Alert, Image, Text, TextInput, TouchableOpacity, View } from 'react-native';
+import { Alert, FlatList, Image, ScrollView, Text, TextInput, TouchableOpacity, View } from 'react-native';
 import { ListTodo } from '../components/ListTodo';
 import { styles } from './styles';
-import { uuid } from 'uuidv4';
 
 interface Task {
-    id: string;
     nameTask: string;
     done: boolean
 }
@@ -24,7 +22,6 @@ export function Home() {
         }
 
         const task = {
-            id: uuid(),
             nameTask: nameTaskText,
             done: false
         }
@@ -40,6 +37,26 @@ export function Home() {
 
         setTasks(prevState => [...prevState, task]);
         setnameTaskText('');
+        return(console.log(tasks));
+    }
+
+    function handleTaskRemove(name: string) {    
+        Alert.alert(
+          'Alerta',
+          `Você tem certeza que quer remover o participante ${name} ?`,
+          [
+            {
+              text: 'OK',
+              onPress: () =>
+                setTasks((prevState) =>
+                  prevState.filter((task) => task.nameTask !== name)
+                ),
+            },
+            {
+              text: 'Cancelar',
+            },
+          ]
+        );
     }
 
   return (
@@ -93,8 +110,15 @@ export function Home() {
             <View style={styles.containerList}>
                 
                 <View style={styles.line} />
-                <ListTodo />
-            </View>          
+                <ScrollView>
+                    {
+                        tasks.map(task =>  (
+                            <ListTodo key={task.nameTask} nameTask={task.nameTask} done={task.done} />
+                        ))
+                    }
+                </ScrollView> 
+                
+            </View>      
 
         </View>
     </>
