@@ -12,16 +12,18 @@ export const styles = StyleSheet.create({
     container2: {
         flex: 0.75,
         backgroundColor: '#454545',
+        alignItems: "center",
     },
     containerLogos: {
         display: "flex",
         flexDirection: "row",
         marginTop: 70
     },
-    img: {
+    imgLogo: {
         marginRight: 10
     },
     form: {
+        margin: -25,
         display: "flex",
         flexDirection: 'row',
         justifyContent: 'center',
@@ -29,7 +31,8 @@ export const styles = StyleSheet.create({
         padding: 0,
         gap: 4,
         marginRight: 20,
-        paddingLeft: 20
+        paddingLeft: 20,
+        marginLeft: 0
     },
     input: {
         flex: 1,
@@ -51,7 +54,38 @@ export const styles = StyleSheet.create({
         alignItems: 'center'
 
     },
-    buttonText: {
-
+    container3: {
+        margin: 60,
+        width: '90%',
+        flexDirection: 'row',
+        justifyContent: 'space-between'
+    },
+    containerInfos: {
+        flexDirection: "row",
+        backgroundColor: 'gren',
+        //justifyContent: 'space-between'
+    },
+    infoTextCreated: {
+        color: '#4EA8DE',
+        marginRight: 8
+    },
+    infoTextDone: {
+        color: '#8284FA',
+        marginRight: 8,
+    },
+    infoCounter: {
+        backgroundColor: '#333333',
+        borderRadius: 7.5,
+        alignItems: 'center',
+        width: 20,
+        height: 20
+    },
+    line:{
+        backgroundColor: '#A2A2A2',
+        height: 2,
+        width: '100%'
+    },
+    containerList: {
+        width: '90%'
     }
 })
